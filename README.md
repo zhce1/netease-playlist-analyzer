@@ -9,7 +9,7 @@
 
 这是一个能够自动抓取你的网易云音乐歌单数据，进行多维度分析，并生成一份故事化的音乐编年史报告的 skill。
 
-**输出效果**：一份 3000-6000 字的深度分析报告（Markdown + PDF），以第二人称「你」的视角，像一位懂音乐的老朋友，深入解读你多年音乐收藏背后的灵魂画像。
+**输出效果**：一份 4000-8000 字的深度分析报告（Markdown + 精美多页 HTML + PDF），以第二人称「你」的视角，像一位懂音乐的老朋友，深入解读你多年音乐收藏背后的灵魂画像。
 
 ## 📊 分析维度
 
@@ -52,24 +52,49 @@ netease-playlist-analyzer/
 ├── scripts/
 │   ├── fetch_playlist.py                  # 歌单数据获取（支持链接/ID 自动识别）
 │   ├── analyze_playlist.py                # 多维度数据分析
-│   ├── generate_html_report.py            # Markdown → 精美 HTML
+│   ├── generate_html_report.py            # Markdown → 精美多页 HTML（A4分页设计）
+│   ├── generate_pdf_reportlab.py          # Markdown → 暗色主题 PDF（基于 ReportLab）
 │   └── html_to_pdf.py                     # HTML → PDF（基于 Playwright）
-└── references/
-    └── report_writing_guide.md            # 报告写作风格指南
+├── references/
+│   └── report_writing_guide.md            # 报告写作风格指南
+└── assets/                                # 静态资源（如有）
 ```
+
+## 🎨 输出格式
+
+### HTML 报告（推荐）
+- A4 分页设计，每章独立一页
+- 每页独立背景色 + 装饰元素（唱片、声波、琴弦、指南针等）
+- 封面页含唱片装饰、音符、五线谱元素
+- Noto Serif SC + Noto Sans SC 双字体
+- 支持浏览器直接打印为 PDF
+
+### PDF 报告（暗色主题）
+- 深色背景 + 青/紫/金/粉多色点缀
+- 数据柱状图可视化
+- 不依赖浏览器，适合服务器环境
+- 基于 ReportLab 生成
 
 ## ⚙️ 依赖
 
 - **Python 3.8+**
-- **requests**：用于调用网易云 API
-- **playwright**（可选）：用于生成 PDF
+- **requests**（可选）：用于调用网易云 API（脚本默认使用 urllib，无需额外安装）
+- **playwright**（可选）：用于 HTML→PDF 转换
+- **reportlab**（可选）：用于暗色主题 PDF 直接生成
 
 ```bash
-pip install requests playwright
+# 最小安装（无额外依赖）
+python3 scripts/fetch_playlist.py ...
+
+# HTML→PDF 方案
+pip install playwright
 playwright install chromium
+
+# ReportLab PDF 方案
+pip install reportlab
 ```
 
-> 💡 如果不安装 playwright，报告仍会正常生成 HTML 和 Markdown 格式，你可以用浏览器手动打印为 PDF。
+> 💡 如果不安装 playwright 和 reportlab，报告仍会正常生成 HTML 和 Markdown 格式，你可以用浏览器手动打印为 PDF。
 
 ## 📝 注意事项
 
@@ -78,16 +103,17 @@ playwright install chromium
 - 已内置请求频率控制（0.8s 间隔），无需担心被封
 - 报告中所有数据均来自实际分析，不编造任何内容
 
-## 📄 输出示例
+## 📄 报告结构
 
 报告会包含以下章节：
 
-1. **音乐内核总述** — 用一段话概括你的音乐灵魂
+1. **音乐内核总述** — 用一段比喻概括你的音乐灵魂
 2. **编年史纪元** — 按年份划分 3-6 个时期，讲述音乐与人生的交织
-3. **深层解读** — 3-5 条贯穿始终的音乐线索
-4. **灵魂画像** — 一句话定义你的音乐人格
-5. **🔮 下一纪元：音乐预言** — 根据你的年龄与品味演进，为即将到来的人生阶段推荐 8-12 首歌，附哲学释义
-6. **尾声** — 从过去到未来的呼应
+3. **🎸 音乐琴弦** — 将品味抽象为 5-6 根"弦"，每根对应一类情感需求
+4. **🗺️ 灵魂疆域** — 精神地图：你的灵魂住在哪里
+5. **⏳ 峥嵘岁月** — 按年龄段快速回顾人生弧线
+6. **🔮 下一纪元：音乐预言** — 场景化推荐 8-12 首歌，附哲学释义
+7. **尾声** — 从过去到未来的呼应
 
 ## 🤝 Contributing
 
