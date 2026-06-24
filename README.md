@@ -2,13 +2,12 @@
 
 > 基于你的「我喜欢的音乐」歌单，生成一份深度个性化的音乐品味编年史报告。
 
-![CodeBuddy Skill](https://img.shields.io/badge/CodeBuddy-Skill-blueviolet?style=flat-square)
 ![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## ✨ 这是什么
 
-这是一个 [CodeBuddy](https://www.codebuddy.ai) Skill，能够自动抓取你的网易云音乐歌单数据，进行多维度分析，并生成一份故事化的音乐编年史报告。
+这是一个能够自动抓取你的网易云音乐歌单数据，进行多维度分析，并生成一份故事化的音乐编年史报告的 skill。
 
 **输出效果**：一份 3000-6000 字的深度分析报告（Markdown + PDF），以第二人称「你」的视角，像一位懂音乐的老朋友，深入解读你多年音乐收藏背后的灵魂画像。
 
@@ -26,7 +25,7 @@
 
 ## 🚀 使用方法
 
-### 在 CodeBuddy 中使用
+### 在 AI coding 产品中使用（如 codex、claude code、codebuddy）
 
 1. 安装此 Skill（导入 `.skill` 文件或从 Skill 市场安装）
 2. 对 AI 说：**「分析我的网易云歌单」**
