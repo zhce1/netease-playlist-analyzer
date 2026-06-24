@@ -84,7 +84,8 @@ python3 {SKILL_DIR}/scripts/analyze_playlist.py "<工作目录>/playlist_data.js
 2. 编年史纪元（按年份分3-6段）
 3. 深层解读（3-5条线索）
 4. 灵魂画像
-5. 尾声
+5. 下一纪元：音乐预言（根据年龄和品味演进，推荐8-12首歌 + 哲学释义）
+6. 尾声
 
 将报告保存为 `<工作目录>/music_report.md`。
 
